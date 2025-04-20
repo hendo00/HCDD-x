@@ -3,7 +3,7 @@
 ```bash
 cd kuacel_ws/src
 git clone https://github.com/odriverobotics/ros_odrive.git
-git clone <this_repo_url>
+git clone https://github.com/hendo00/HCDD.git
 cd ..
 colcon build --symlink-install
 source ~/.bashrc
