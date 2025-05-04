@@ -16,7 +16,14 @@ def generate_launch_description():
         Node(
             package='odrive_test',
             executable='odrive_control',
-            name='odrive_control'
+            name='odrive_control0',
+            parameters=[{'node_id': 0}],
+        ),
+        Node(
+            package='odrive_test',
+            executable='odrive_control',
+            name='odrive_control1',
+            parameters=[{'node_id': 1}],
         ),
         Node(
             package='plotjuggler',

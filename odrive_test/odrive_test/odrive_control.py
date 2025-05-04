@@ -11,14 +11,20 @@ class OdriveControl(Node):
     def __init__(self):
         super().__init__('odrive_control')
         self.shutdown_flag = False  # Shutdown flag
+        self.declare_parameter('node_id', 0)  # Default ODrive node id
+        node_id = self.get_parameter('node_id').get_parameter_value().integer_value
 
+        # Build topic names based on node id
+        self.controller_status_topic = f'/odrive_axis{node_id}/controller_status'
+        self.control_message_topic = f'/odrive_axis{node_id}/control_message'
+        self.axis_state_service = f'/odrive_axis{node_id}/request_axis_state'
         # Sub Joy, ControllerStatus & Pub ControlMessage
-        self.status_sub = self.create_subscription(ControllerStatus, '/odrive_axis0/controller_status', self.status_cb, 10)
+        self.status_sub = self.create_subscription(ControllerStatus, self.controller_status_topic, self.status_cb, 10)
         self.joy_sub = self.create_subscription(Joy, 'joy', self.joy_cb, 10)
-        self.control_pub = self.create_publisher(ControlMessage, '/odrive_axis0/control_message', 10)
+        self.control_pub = self.create_publisher(ControlMessage, self.control_message_topic, 10)
 
         # Call the AxisState service [8: Control_mode, 1: Idle]
-        self.axis_state_srv = self.create_client(AxisState, '/odrive_axis0/request_axis_state')
+        self.axis_state_srv = self.create_client(AxisState, self.axis_state_service)
 
         # Vars
         self.control_modes = [1, 3]  # Torque, Velocity, Position

@@ -1,43 +1,45 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <root>
- <tabbed_widget parent="main_window" name="Main Window">
-  <Tab tab_name="tab1" containers="1">
+ <tabbed_widget name="Main Window" parent="main_window">
+  <Tab containers="1" tab_name="tab1">
    <Container>
-    <DockSplitter count="5" orientation="-" sizes="0.200288;0.200288;0.198847;0.200288;0.200288">
+    <DockSplitter sizes="0.200288;0.200288;0.198847;0.200288;0.200288" count="5" orientation="-">
      <DockArea name="...">
-      <plot flip_x="false" flip_y="false" mode="TimeSeries" style="Lines">
-       <range left="6.324751" bottom="-0.005393" right="11.324653" top="0.003856"/>
+      <plot flip_x="false" flip_y="false" style="Lines" mode="TimeSeries">
+       <range top="0.005994" right="16.700117" left="0.000000" bottom="-0.004771"/>
        <limitY/>
-       <curve name="/odrive_axis0/controller_status/torque_target" color="#1f77b4"/>
-       <curve name="/odrive_axis0/controller_status/torque_estimate" color="#d62728"/>
+       <curve color="#d62728" name="/odrive_axis0/controller_status/torque_estimate"/>
+       <curve color="#1f77b4" name="/odrive_axis1/controller_status/torque_estimate"/>
       </plot>
      </DockArea>
      <DockArea name="...">
-      <plot flip_x="false" flip_y="false" mode="TimeSeries" style="Lines">
-       <range left="6.324751" bottom="-0.021569" right="11.324653" top="0.178431"/>
+      <plot flip_x="false" flip_y="false" style="Lines" mode="TimeSeries">
+       <range top="0.100000" right="16.700117" left="0.000000" bottom="-0.100000"/>
        <limitY/>
-       <curve name="/force_sensor_data/data" color="#1f77b4"/>
+       <curve color="#1f77b4" name="/force_sensor_data/data"/>
       </plot>
      </DockArea>
      <DockArea name="...">
-      <plot flip_x="false" flip_y="false" mode="TimeSeries" style="Lines">
-       <range left="6.324751" bottom="-0.100000" right="11.324653" top="0.100000"/>
+      <plot flip_x="false" flip_y="false" style="Lines" mode="TimeSeries">
+       <range top="0.100000" right="16.700117" left="0.000000" bottom="-0.100000"/>
        <limitY/>
-       <curve name="/joy/axes[1]" color="#f14cc1"/>
+       <curve color="#f14cc1" name="/joy/axes[1]"/>
       </plot>
      </DockArea>
      <DockArea name="...">
-      <plot flip_x="false" flip_y="false" mode="TimeSeries" style="Lines">
-       <range left="6.324751" bottom="-0.014690" right="11.324653" top="0.016798"/>
+      <plot flip_x="false" flip_y="false" style="Lines" mode="TimeSeries">
+       <range top="0.015696" right="16.700117" left="0.000000" bottom="-0.014305"/>
        <limitY/>
-       <curve name="/odrive_axis0/controller_status/vel_estimate" color="#9467bd"/>
+       <curve color="#9467bd" name="/odrive_axis0/controller_status/vel_estimate"/>
+       <curve color="#d62728" name="/odrive_axis1/controller_status/vel_estimate"/>
       </plot>
      </DockArea>
      <DockArea name="...">
-      <plot flip_x="false" flip_y="false" mode="TimeSeries" style="Lines">
-       <range left="6.324751" bottom="-1016.682375" right="11.324653" top="-1016.682310"/>
+      <plot flip_x="false" flip_y="false" style="Lines" mode="TimeSeries">
+       <range top="-1.555438" right="16.700117" left="0.000000" bottom="-3.796349"/>
        <limitY/>
-       <curve name="/odrive_axis0/controller_status/pos_estimate" color="#17becf"/>
+       <curve color="#17becf" name="/odrive_axis0/controller_status/pos_estimate"/>
+       <curve color="#1ac938" name="/odrive_axis1/controller_status/pos_estimate"/>
       </plot>
      </DockArea>
     </DockSplitter>
@@ -68,7 +70,7 @@
    <max_array_size value="100"/>
    <boolean_strings_to_number value="true"/>
    <remove_suffix_from_strings value="true"/>
-   <selected_topics value="/joy;/odrive_axis0/controller_status;/force_sensor_data"/>
+   <selected_topics value="/joy;/odrive_axis0/controller_status;/odrive_axis1/controller_status"/>
   </plugin>
   <plugin ID="UDP Server"/>
   <plugin ID="WebSocket Server"/>
